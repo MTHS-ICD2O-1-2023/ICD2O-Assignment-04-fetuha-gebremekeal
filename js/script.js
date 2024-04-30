@@ -9,9 +9,9 @@
 function myButtonClicked() {
   // input
   const TAX = 1.13
-  const COST_SIX_INCH = 1
-  const COST_TWELVE_INCH = 1.75
-  const COST_MEATBALL = 7.0
+  const COST_SMALL = 1
+  const COST_LARGE = 1.75
+  const COST_BACON = 7.0
   const COST_HAM = 5.0
   const COST_CHICKEN = 5.5
   const COST_TURKEY = 6.0
@@ -21,18 +21,18 @@ function myButtonClicked() {
 
   // input
   const subMeat = parseInt(document.getElementById("sub-meat").value)
-  const subLength = parseInt(document.getElementById("sub-length").value)
+  const size = parseInt(document.getElementById("size").value)
 
   // process
 
-  if (subLength == 6) {
-    costLength = COST_SIX_INCH
+  if (size == 6) {
+    costSize = COST_SMALL
   } else {
-    costLength = COST_TWELVE_INCH
+    costSize = COST_LARGE
   }
 
   if (subMeat == 1) {
-    cost = COST_MEATBALL
+    cost = COST_BACON
   } else if (subMeat == 2) {
     cost = COST_HAM
   } else if (subMeat == 3) {
@@ -41,11 +41,11 @@ function myButtonClicked() {
     cost = COST_TURKEY
   }
 
-  price = costLength * cost * TAX
+  price = costSize * cost * TAX
 
   // output
   document.getElementById("answer").innerHTML =
     "Your total comes to $" +
     price.toFixed(2) +
-    ". Thank you for eating at Subway!"
+    ". Thank you!"
 }
