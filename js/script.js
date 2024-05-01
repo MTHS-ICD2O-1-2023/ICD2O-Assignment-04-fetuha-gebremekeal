@@ -1,51 +1,33 @@
-// Copyright (c) 2024 Fetuha. All rights reserved
+// Copyright (c) 2024 Fetuha All rights reserved
 //
 // Created by: Fetuha
-// Created on: April 2024
+// Created on: Mar 2024
 // This file contains the JS functions for index.html
 
-"use strict"
-
-function myButtonClicked() {
-  // input
-  const TAX = 1.13
-  const COST_SMALL = 1
-  const COST_LARGE = 1.75
-  const COST_BACON = 7.0
-  const COST_HAM = 5.0
-  const COST_CHICKEN = 5.5
-  const COST_TURKEY = 6.0
-  let costSize = 0
-  let cost = 0
-  let price = 0
-
-  // input
-  const meat = parseInt(document.getElementById("meat").value)
-  const size = parseInt(document.getElementById("size").value)
-
-  // process
-
-  if (size == 6) {
-    costSize = COST_SMALL
+function makeReceiptClicked() {
+  const choiceSML = (document.getElementById("option-small").checked)
+  const choiceBacon = (document.getElementById("checkbox-bacon").checked)
+  const choiceChicken = (document.getElementById("checkbox-chicken").checked)
+  const choiceSauce = (document.getElementById("checkbox-sauce").checked)
+  let total = 10
+  if (choiceSML == true) {
+    document.getElementById("answer").innerHTML = "Small Poutine $10.00 <br /><br />"
   } else {
-    costSize = COST_LARGE
+    document.getElementById("answer").innerHTML = "Large Poutine $15.00 <br /><br />"
   }
-
-  if (meat == 1) {
-    cost = COST_BACON
-  } else if (meat == 2) {
-    cost = COST_HAM
-  } else if (meat == 3) {
-    cost = COST_CHICKEN
-  } else {
-    cost = COST_TURKEY
+  if (choiceBacon == true) {
+    document.getElementById("answer").innerHTML += "Bacon $3.00 <br />"
+    total += 3
+  } 
+  if (choiceChicken == true) {
+    document.getElementById("answer").innerHTML += "Chicken $2.00 <br />"
+    total += 2
+  } 
+  if (choiceSauce == true) {
+    document.getElementById("answer").innerHTML += "Sauce $1.00 <br />"
+    total += 1
   }
-
-  price = costSize * cost * TAX
-
-  // output
-  document.getElementById("answer").innerHTML =
-    "Your total comes to $" +
-    price.toFixed(2) +
-    ". Thank you!"
+  document.getElementById("answer").innerHTML += "<br /> Subtotal = $" + total.toFixed(2)
+  total *= 1.13
+  document.getElementById("answer").innerHTML += "<br /><br /> HST = 13% <br /><br /> Total = $" + total.toFixed(2)
 }
